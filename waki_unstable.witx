@@ -1,0 +1,6 @@
+(use "typenames.witx")
+
+(module $waki_unstable
+  ;;; Linear memory to be accessed by functions that need it.
+  (import "memory" (memory))
+)

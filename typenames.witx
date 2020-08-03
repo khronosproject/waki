@@ -1,0 +1,8 @@
+;;; Error codes returned by functions.
+;;;
+(typename $errno
+  (enum u16
+    ;;; No error occurred.
+    $success
+  )
+)
