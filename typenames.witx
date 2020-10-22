@@ -1,8 +1,23 @@
+(typename $size u32)
+
 ;;; Error codes returned by functions.
 ;;;
 (typename $errno
   (enum u16
     ;;; No error occurred.
     $success
+  )
+)
+
+;;; A video device handle.
+(typename $video_device (handle))
+
+;;; A video context handle.
+(typename $video_context (handle))
+
+;;; Pixel formats used by framebuffer related functions.
+(typename pixel_format
+  (enum u16
+    rbga_32,
   )
 )
