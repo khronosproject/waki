@@ -3,4 +3,73 @@
 (module $waki_unstable
   ;;; Linear memory to be accessed by functions that need it.
   (import "memory" (memory))
+
+  ;;; Open a video device
+  ;;;
+  (@interface func (export "video_open_device")
+    ;;; The error that occured, if any.
+    (result $error $errno)
+
+    ;;; The video device handle of the device that has been opened.
+    (result $opened_device $video_device)
+  )
+
+  ;;; Close a video device
+  ;;;
+  (@interface func (export "video_close_device")
+    ;; The video device handle that should be closed.
+    ;;
+    (param device $video_device)
+
+    ;;; The error that occured, if any.
+    (result $error $errno)
+  )
+
+  ;;; Create a video context
+  ;;;
+  (@interface func (export "video_create_context")
+    ;;; The device to create a context for
+    (param device $video_device)
+
+    ;;; The error that occured, if any.
+    (result $error $errno)
+  )
+
+  ;;; Close a video context
+  ;;;
+  (@interface func (export "video_destroy_context")
+    ;;; The context to destroy.
+    (param context $video_context)
+
+    ;;; The error that occured, if any.
+    (result $error $errno)
+  )
+
+  ;;; Write a block of pixels to the frame buffer
+  ;;;
+  (@interface func (export "video_draw_pixels")
+    ;;; The context to destroy.
+    (param context $video_context)
+
+    ;;; Specifies the y raster position.
+    (param x $size)
+
+    ;;; Specifies the y raster position.
+    (param y $size)
+
+    ;;; Specifies the height of the pixel data.
+    (param width $size)
+
+    ;;; Specifies the width of the pixel data.
+    (param height $size)
+
+    ;;; Specifies the format of the pixel data.
+    (param format $pixel_format)
+
+    ;;; Specifies a pointer to the pixel data.
+    (param data $size)
+
+    ;;; The error that occured, if any.
+    (result $error $errno)
+  )
 )
